@@ -56,7 +56,7 @@
 </head>
 <body>
     <h1>Register New User</h1>
-    <form action="./api" onsubmit="return validateForm()" method="GET, POST">
+    <form action="./api" onsubmit="return validateForm()" method="POST">
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
