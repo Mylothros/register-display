@@ -7,8 +7,14 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./styling/register.scss">
     <script>
+
         $(function() {
-            $("#birthdate").datepicker({ dateFormat: 'yy-mm-dd' });
+            $("#birthdate").datepicker({
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: '1900:c'
+            });
         });
 
         function validateForm() {
