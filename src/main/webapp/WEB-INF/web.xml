@@ -10,6 +10,16 @@
     <servlet-name>register</servlet-name>
     <url-pattern>/api</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>displayUsers</servlet-name>
+    <servlet-class>com.display_user.displayUsers</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>displayUsers</servlet-name>
+    <url-pattern>/api2</url-pattern>
+  </servlet-mapping>
   
   <welcome-file-list>
     <welcome-file>homepage.jsp</welcome-file>

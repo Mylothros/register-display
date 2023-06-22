@@ -1,4 +1,5 @@
 package com.display_user;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/register")
 public class register extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
@@ -23,14 +23,11 @@ public class register extends HttpServlet {
         String birthdate = request.getParameter("birthdate");
         String workAddress = request.getParameter("workAddress");
         String homeAddress = request.getParameter("homeAddress");
-
-        
-        // Perform validation
+        // Perform validation which will take you back to register.jsp and the error will be in the url
         if (name.isEmpty() || surname.isEmpty() || gender.isEmpty() || birthdate.isEmpty()) {
-            response.sendRedirect("register.jsp?error=Please fill in all mandatory fields.");
+            response.sendRedirect("register.jsp?error=Fill the mandatory fields.");
             return;
         }
-
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
             String DB_URL = "jdbc:mysql://localhost:3306/projectdb";
@@ -38,14 +35,12 @@ public class register extends HttpServlet {
             String DB_PASSWORD = "charalampos";
             UUID uuid = UUID.randomUUID();
             String randomId = uuid.toString();
+            // Load the JDBC driver
             Class.forName(driver);
-            
             Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-            
             // Prepare the SQL statement
             String sqlusers = "INSERT INTO users (id, name, surname, gender, birthdate) VALUES " + "('" + randomId + "', '" + name + "', '" + surname + "', '" + gender + "', '" + birthdate + "')";
             PreparedStatement statement = conn.prepareStatement(sqlusers);
-            response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<html><body>");
             out.println("<link rel=\"stylesheet\" href=\"./styling/register.scss\">");
@@ -62,12 +57,10 @@ public class register extends HttpServlet {
             out.println("</div>");
             out.println("</body></html>");
             out.close();
+            // Execute the SQL query to modify data in the database
             statement.executeUpdate();
-            // Close the database connection
             statement.close();
-           
-            String sqladress = "INSERT INTO addresses (user_id, workAddress, homeAddress) VALUES " + "('" + randomId + "', '" + workAddress + "', '" + homeAddress + "')";
-                  
+            String sqladress = "INSERT INTO addresses (user_id, workAddress, homeAddress) VALUES " + "('" + randomId + "', '" + workAddress + "', '" + homeAddress + "')";     
             PreparedStatement statement2 = conn.prepareStatement(sqladress);
             statement2.executeUpdate();
             statement2.close();
@@ -78,4 +71,3 @@ public class register extends HttpServlet {
     }
     }
 }
-

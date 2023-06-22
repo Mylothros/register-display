@@ -1,4 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,6 +5,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./styling/register.scss">
     <script>
         $(function() {
             $("#birthdate").datepicker({ dateFormat: 'yy-mm-dd' });
@@ -52,9 +52,11 @@
             }
         }
     </script>
-    <link rel="stylesheet" href="./styling/register.scss">
 </head>
 <body>
+    <div class="home-button home-button-register">
+        <button onclick="location.href='homepage.jsp'">Homepage</button>
+    </div>
     <h1>Register New User</h1>
     <form action="./api" onsubmit="return validateForm()" method="POST">
         <div>
