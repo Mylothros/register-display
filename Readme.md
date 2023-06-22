@@ -9,7 +9,7 @@ This is a simple web application that allows users to register and display user 
 - [Display Users](#display-users)
 - [Tools used](#tools-used)
 - [Installation and Setup](#installation-and-setup)
-- [Presenation of the Project](#presentation-of-the-project)
+- [Presentation](#presentation)
 
 ## Homepage
 
@@ -83,7 +83,7 @@ CREATE TABLE users (
 );
 ```
 
-## Presenation of the Project
+## Presentation
 
 ![homepage](./images/image1.jpg)
 ![register](./images/image2.jpg)
